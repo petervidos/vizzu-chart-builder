@@ -193,7 +193,7 @@ class ChartBuilder:
             contains["Value2"] = True
         self._key = ", ".join(key for key, value in contains.items() if value)
         if self._key not in self.KEYS:
-            st.warning("Please select both a category and a value for the chart!")
+            st.warning("Please select at least one category and one value!")
 
     def _parse_presets_file(self):
         with open("presets/presets.json", "r") as json_file:
@@ -224,7 +224,7 @@ class ChartBuilder:
             self._add_chart_code(config)
 
     def _add_chart_title(self, raw_config):
-        st.caption(raw_config["chart"])
+        st.subheader(raw_config["chart"])
 
     def _add_chart_animation(self, index, data, config):
         chart = streamlit_vizzu.VizzuChart(
